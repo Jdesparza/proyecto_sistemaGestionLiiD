@@ -1,5 +1,7 @@
-import Sequelize from 'sequelize';
+import Sequelize, { BelongsTo } from 'sequelize';
 import {sequelize} from '../database/database';
+
+import Licenses from './licenses';
 
 const Departments = sequelize.define('Departments', {
     deptID: {
@@ -13,5 +15,8 @@ const Departments = sequelize.define('Departments', {
 }, {
     timestamps: false
 });
+
+Departments.hasMany(Licenses, { foreingKey: 'DepartmentDeptID', sourceKey: 'deptID' });
+Licenses.belongsTo(Departments, { foreingKey: 'DepartmentDeptID', sourceKey: 'deptID' });
 
 export default Departments;
