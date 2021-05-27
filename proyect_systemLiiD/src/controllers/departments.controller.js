@@ -1,4 +1,9 @@
 import Departments from '../models/departments';
+import Staffs from '../models/staffs';
+import Licenses from '../models/licenses';
+import Staff_projects from '../models/staff_projects';
+
+
 
 export async function getDepartments(req, res) {
     const departments =  await Departments.findAll();
@@ -35,13 +40,37 @@ export async function createDepartments(req, res) {
 } ;
 
 export async function deleteDepartments(req , res) {
-    const { deptID } = req.params;
+    const { deptID } = req.params; 
+    const DepartmentDeptID = deptID;
+    
+    
+    const StaffStaffID = staffID;
     try {
+        
+        await Staff_projects.destroy({
+            where: {
+                StaffStaffID
+            }
+        });
+
+        await Staffs.destroy({
+            where: {
+                DepartmentDeptID 
+            }
+        });
+
+        await Licenses.destroy({
+            where: {
+                DepartmentDeptID
+            }
+        });
+
         const deleteRowCount = await Departments.destroy({
             where: {
                 deptID
             }
         });
+        
         res.json({
             message: 'Department deleted succesfully',
             count: deleteRowCount

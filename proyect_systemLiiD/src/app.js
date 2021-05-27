@@ -5,6 +5,8 @@ import morgan from 'morgan';
 import departmentsRoutes from  './routes/departments';
 import licensesRoutes from  './routes/licenses';
 import projectsRoutes from  './routes/projects';
+import staffsRoutes from  './routes/staffs';
+import staff_projectsRoutes from  './routes/staff_projects';
 
 
 // initialozation
@@ -18,5 +20,7 @@ app.use(json());
 app.use('/api/departments', departmentsRoutes);
 app.use('/api/licenses', licensesRoutes);
 app.use('/api/projects', projectsRoutes);
+app.use('/api/staffs', staffsRoutes);
+app.use('/api/staff_projects', staff_projectsRoutes);
 
 export default app;
