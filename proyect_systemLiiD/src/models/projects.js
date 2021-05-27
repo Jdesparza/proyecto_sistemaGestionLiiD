@@ -37,7 +37,7 @@ const projects = sequelize.define('Projects', {
     timestamps: false
 });
 
-projects.hasMany(Staff_Projects, { foreingKey: 'ProjectProjectID', sourceKey: 'projectID' });
-Staff_Projects.belongsTo(projects, { foreingKey: 'ProjectProjectID', sourceKey: 'projectID' });
+projects.belongsToMany(Staff_Projects, { through: 'ProjectProjectID', foreingKey: 'ProjectProjectID', sourceKey: 'projectID', onDelete: 'cascade', hooks: true });
+Staff_Projects.belongsTo(projects, { foreingKey: 'ProjectProjectID', sourceKey: 'projectID', onDelete: 'cascade', hooks: true });
 
 export default projects;

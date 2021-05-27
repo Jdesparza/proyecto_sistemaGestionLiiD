@@ -41,29 +41,7 @@ export async function createDepartments(req, res) {
 
 export async function deleteDepartments(req , res) {
     const { deptID } = req.params; 
-    const DepartmentDeptID = deptID;
-    
-    
-    const StaffStaffID = staffID;
     try {
-        
-        await Staff_projects.destroy({
-            where: {
-                StaffStaffID
-            }
-        });
-
-        await Staffs.destroy({
-            where: {
-                DepartmentDeptID 
-            }
-        });
-
-        await Licenses.destroy({
-            where: {
-                DepartmentDeptID
-            }
-        });
 
         const deleteRowCount = await Departments.destroy({
             where: {

@@ -58,7 +58,7 @@ export async function updateStaff_Projects(req, res) {
 
     try {
         const staff_projects = await Staff_Projects.findAll({
-            attributes: ['StaffStaffID', 'ProjectProjectID'],
+            attributes: ['staff_ProjectID', 'StaffStaffID', 'ProjectProjectID'],
             where: {
                 staff_ProjectID
             }

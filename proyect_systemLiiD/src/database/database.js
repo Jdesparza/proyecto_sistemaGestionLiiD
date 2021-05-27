@@ -3,7 +3,7 @@ import Sequelize from 'sequelize';
 export const sequelize = new Sequelize(
     'sistemaGestionLiiD',
     'postgres',
-    '123456789',
+    'root',
     {
         host: 'localhost',
         dialect: 'postgres',

@@ -17,10 +17,10 @@ const Departments = sequelize.define('Departments', {
     timestamps: false
 });
 
-Departments.hasMany(Licenses, { foreingKey: 'DepartmentDeptID', sourceKey: 'deptID' });
-Licenses.belongsTo(Departments, { foreingKey: 'DepartmentDeptID', sourceKey: 'deptID' });
+Departments.hasMany(Licenses, { foreingKey: 'DepartmentDeptID', sourceKey: 'deptID', onDelete: 'cascade', hooks: true });
+Licenses.belongsTo(Departments, { foreingKey: 'DepartmentDeptID', sourceKey: 'deptID', onDelete: 'cascade', hooks: true });
 
-Departments.hasMany(Staffs, { foreingKey: 'DepartmentDeptID', sourceKey: 'deptID' });
-Staffs.belongsTo(Departments, { foreingKey: 'DepartmentDeptID', sourceKey: 'deptID' });
+Departments.hasMany(Staffs, { foreingKey: 'DepartmentDeptID', sourceKey: 'deptID', onDelete: 'cascade', hooks: true });
+Staffs.belongsTo(Departments, { foreingKey: 'DepartmentDeptID', sourceKey: 'deptID', onDelete: 'cascade', hooks: true });
 
 export default Departments;
